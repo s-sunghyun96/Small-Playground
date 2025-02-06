@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace BeehiveManagementSystem
 {
@@ -16,12 +17,17 @@ namespace BeehiveManagementSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DispatcherTimer timer = new();
         private Queen queen = new ();
 
         public MainWindow()
         {
             InitializeComponent();
             statusReport.Text = queen.StatusReport;
+            timer.Tick += Timer_Tick;
+            timer.Interval = TimeSpan.FromSeconds(2);
+            //timer.Start();
+            
         }
 
         private void Timer_Tick(object? sender, EventArgs e)

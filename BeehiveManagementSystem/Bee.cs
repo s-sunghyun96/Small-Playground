@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BeehiveManagementSystem
 {
-    internal class Bee(string job)
+    abstract class Bee(string job)
     {
-        public virtual float CostPerShift { get; }
+        public abstract float CostPerShift { get; }
         public string Job { get; private set; } = job;
 
         public void WorkTheNextShift()
@@ -17,9 +17,6 @@ namespace BeehiveManagementSystem
                 DoJob();
         }
 
-        protected virtual void DoJob()
-        {
-            //하위 클래스에서 재정의
-        }
+        protected abstract void DoJob();
     }
 }
