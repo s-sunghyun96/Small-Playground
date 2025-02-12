@@ -18,15 +18,16 @@ namespace BeehiveManagementSystem
     public partial class MainWindow : Window
     {
         private DispatcherTimer timer = new();
-        private Queen queen = new ();
+        private readonly Queen queen = new ();
 
         public MainWindow()
         {
             InitializeComponent();
-            statusReport.Text = queen.StatusReport;
+            queen = Resources["queen"] as Queen;
+            //statusReport.Text = queen.StatusReport;
             timer.Tick += Timer_Tick;
-            timer.Interval = TimeSpan.FromSeconds(2);
-            //timer.Start();
+            timer.Interval = TimeSpan.FromSeconds(1.5);
+            timer.Start();
             
         }
 
